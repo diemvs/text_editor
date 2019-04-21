@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>Icons/colour48.png</file>
+        <file>Icons/font48.png</file>
+        <file>Icons/newFile48.png</file>
+        <file>Icons/save48.png</file>
+        <file>Icons/saveAs48.png</file>
+        <file>Icons/openFile.png</file>
+        <file>Icons/redo48.png</file>
+        <file>Icons/undo48.png</file>
+        <file>Icons/fontColour48.png</file>
+        <file>Icons/about48.png</file>
+        <file>Icons/cut48.png</file>
+        <file>Icons/paste48.png</file>
+        <file>Icons/copy48.png</file>
+    </qresource>
+</RCC>

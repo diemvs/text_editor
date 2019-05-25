@@ -64,8 +64,8 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="NewFile"/>
-    <addaction name="Open"/>
+    <addaction name="newFile"/>
+    <addaction name="open"/>
     <addaction name="separator"/>
     <addaction name="save"/>
     <addaction name="saveAs"/>
@@ -75,7 +75,7 @@
     <property name="title">
      <string>Style</string>
     </property>
-    <addaction name="Font"/>
+    <addaction name="font"/>
     <addaction name="fontColour"/>
     <addaction name="bColour"/>
    </widget>
@@ -88,25 +88,27 @@
     <property name="title">
      <string>About</string>
     </property>
-    <addaction name="About"/>
+    <addaction name="about"/>
    </widget>
    <widget class="QMenu" name="menuEdit_2">
     <property name="title">
      <string>Edit</string>
     </property>
-    <addaction name="Undo"/>
-    <addaction name="Redo"/>
+    <addaction name="undo"/>
+    <addaction name="redo"/>
     <addaction name="separator"/>
-    <addaction name="Cut"/>
-    <addaction name="Paste"/>
-    <addaction name="Copy"/>
+    <addaction name="cut"/>
+    <addaction name="paste"/>
+    <addaction name="copy"/>
    </widget>
    <widget class="QMenu" name="menuText_Codec">
     <property name="title">
      <string>Encoding</string>
     </property>
-    <addaction name="codec1251"/>
+    <addaction name="codecWindows1251"/>
     <addaction name="codecUTF8"/>
+    <addaction name="codecIBM866"/>
+    <addaction name="codecCP1251"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit_2"/>
@@ -126,19 +128,19 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="Open"/>
+   <addaction name="open"/>
    <addaction name="save"/>
    <addaction name="separator"/>
-   <addaction name="Undo"/>
-   <addaction name="Redo"/>
+   <addaction name="undo"/>
+   <addaction name="redo"/>
    <addaction name="separator"/>
-   <addaction name="Copy"/>
-   <addaction name="Cut"/>
-   <addaction name="Paste"/>
+   <addaction name="copy"/>
+   <addaction name="cut"/>
+   <addaction name="paste"/>
    <addaction name="separator"/>
-   <addaction name="About"/>
+   <addaction name="about"/>
   </widget>
-  <action name="Open">
+  <action name="open">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/openFile.png</normaloff>:/icons/Icons/openFile.png</iconset>
@@ -156,7 +158,7 @@
     <string>Save</string>
    </property>
   </action>
-  <action name="Font">
+  <action name="font">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/font48.png</normaloff>:/icons/Icons/font48.png</iconset>
@@ -174,7 +176,7 @@
     <string>Font colour</string>
    </property>
   </action>
-  <action name="NewFile">
+  <action name="newFile">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/newFile48.png</normaloff>:/icons/Icons/newFile48.png</iconset>
@@ -210,7 +212,7 @@
     <string>Save as</string>
    </property>
   </action>
-  <action name="Undo">
+  <action name="undo">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/undo48.png</normaloff>:/icons/Icons/undo48.png</iconset>
@@ -219,7 +221,7 @@
     <string>Undo</string>
    </property>
   </action>
-  <action name="Redo">
+  <action name="redo">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/redo48.png</normaloff>:/icons/Icons/redo48.png</iconset>
@@ -228,7 +230,7 @@
     <string>Redo</string>
    </property>
   </action>
-  <action name="About">
+  <action name="about">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/about48.png</normaloff>:/icons/Icons/about48.png</iconset>
@@ -237,7 +239,7 @@
     <string>About</string>
    </property>
   </action>
-  <action name="Cut">
+  <action name="cut">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/cut48.png</normaloff>:/icons/Icons/cut48.png</iconset>
@@ -246,7 +248,7 @@
     <string>Cut</string>
    </property>
   </action>
-  <action name="Paste">
+  <action name="paste">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/paste48.png</normaloff>:/icons/Icons/paste48.png</iconset>
@@ -255,7 +257,7 @@
     <string>Paste</string>
    </property>
   </action>
-  <action name="Copy">
+  <action name="copy">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/icons/Icons/copy48.png</normaloff>:/icons/Icons/copy48.png</iconset>
@@ -264,7 +266,7 @@
     <string>Copy</string>
    </property>
   </action>
-  <action name="codec1251">
+  <action name="codecWindows1251">
    <property name="text">
     <string>Windows - 1251</string>
    </property>
@@ -272,6 +274,16 @@
   <action name="codecUTF8">
    <property name="text">
     <string>UTF-8</string>
+   </property>
+  </action>
+  <action name="codecIBM866">
+   <property name="text">
+    <string>IBM 866</string>
+   </property>
+  </action>
+  <action name="codecCP1251">
+   <property name="text">
+    <string>CP - 1251</string>
    </property>
   </action>
  </widget>

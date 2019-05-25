@@ -36,10 +36,7 @@ private slots:
     void Cut();
     void About();
     void Copy();
-    void codecCP1251();
-    void codecIBM866();
-    void codecUTF8();
-    void codecWindows1251();
+    void codec1251();
 
 private:
     Ui::Text_edit *ui;

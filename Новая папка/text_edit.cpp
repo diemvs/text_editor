@@ -1,6 +1,7 @@
 #include "text_edit.h"
 #include "ui_text_edit.h"
 #include "highlighter.h"
+#include "lines.h"
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -22,26 +23,22 @@ Text_edit::Text_edit(QWidget *parent) :
     this->setCentralWidget(ui->textEdit);
     highlighter = new Highlighter(ui->textEdit->document());
 
-    codec = QTextCodec::codecForName("Windows-1251");
 
-    connect(ui->open, SIGNAL(triggered()), this, SLOT(OpenFile()));
+    connect(ui->Open, SIGNAL(triggered()), this, SLOT(OpenFile()));
     connect(ui->saveAs, SIGNAL(triggered()), this, SLOT(SaveAsFile()));
     connect(ui->save, SIGNAL(triggered()), this, SLOT(SaveFile()));
-    connect(ui->font, SIGNAL(triggered()), this, SLOT(Font()));
+    connect(ui->Font, SIGNAL(triggered()), this, SLOT(Font()));
     connect(ui->fontColour, SIGNAL(triggered()), this, SLOT(FontColour()));
-    connect(ui->newFile, SIGNAL(triggered()), this, SLOT(NewFile()));
+    connect(ui->NewFile, SIGNAL(triggered()), this, SLOT(NewFile()));
     connect(ui->bColour, SIGNAL(triggered()), this, SLOT(BackgroundColour()));
-    connect(ui->undo, SIGNAL(triggered()), this, SLOT(Undo()));
-    connect(ui->redo, SIGNAL(triggered()), this, SLOT(Redo()));
-    connect(ui->cut, SIGNAL(triggered()), this, SLOT(Cut()));
-    connect(ui->paste, SIGNAL(triggered()), this, SLOT(Paste()));
-    connect(ui->about, SIGNAL(triggered()), this, SLOT(About()));
-    connect(ui->copy, SIGNAL(triggered()), this, SLOT(Copy()));
+    connect(ui->Undo, SIGNAL(triggered()), this, SLOT(Undo()));
+    connect(ui->Redo, SIGNAL(triggered()), this, SLOT(Redo()));
+    connect(ui->Cut, SIGNAL(triggered()), this, SLOT(Cut()));
+    connect(ui->Paste, SIGNAL(triggered()), this, SLOT(Paste()));
+    connect(ui->About, SIGNAL(triggered()), this, SLOT(About()));
+    connect(ui->Copy, SIGNAL(triggered()), this, SLOT(Copy()));
 
-    connect(ui->codecCP1251, SIGNAL(triggered()), this, SLOT(codecCP1251()));
-    connect(ui->codecUTF8, SIGNAL(triggered()), this, SLOT(codecUTF8()));
-    connect(ui->codecIBM866, SIGNAL(triggered()), this, SLOT(codecIBM866()));
-    connect(ui->codecWindows1251, SIGNAL(triggered()), this, SLOT(codecWindows1251()));
+    connect(ui->codec1251, SIGNAL(triggered()), this, SLOT(codec1251()));
 
     HotKeySave = new QShortcut(this);
     HotKeySave->setKey(Qt::CTRL+Qt::Key_S);
@@ -169,23 +166,12 @@ void Text_edit::About()
       QMessageBox::about(this,"About Notepad",about_text);
 }
 
-void Text_edit::codecCP1251()
+void Text_edit::codec1251()
 {
-    codec = QTextCodec::codecForName("CP-1251");
+    codec = QTextCodec::codecForName("CP1251");
+    QTextCodec::setCodecForLocale(codec);
+
 }
 
-void Text_edit::codecIBM866()
-{
-    codec = QTextCodec::codecForName("IBM 866");
-}
 
-void Text_edit::codecWindows1251()
-{
-    codec = QTextCodec::codecForName("Windows-1251");
-}
-
-void Text_edit::codecUTF8()
-{
-    codec = QTextCodec::codecForName("UTF-8");
-}
 

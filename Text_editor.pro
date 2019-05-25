@@ -27,15 +27,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         text_edit.cpp \
-        highlighter.cpp \
-    lines.cpp
+        highlighter.cpp
 RESOURCES += \
         resource.qrc \
 
 HEADERS += \
         text_edit.h \
-        highlighter.h \
-    lines.h
+        highlighter.h
 
 FORMS += \
         text_edit.ui

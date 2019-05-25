@@ -12,7 +12,6 @@
 #include <QSyntaxHighlighter>
 #include <QTextCodec>
 
-
 Text_edit::Text_edit(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Text_edit)

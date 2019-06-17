@@ -110,10 +110,19 @@
     <addaction name="codecIBM866"/>
     <addaction name="codecCP1251"/>
    </widget>
+   <widget class="QMenu" name="menuHighlighter">
+    <property name="title">
+     <string>Highlighter</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="hlOn"/>
+    <addaction name="hlOff"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit_2"/>
    <addaction name="menuEdit"/>
    <addaction name="menu"/>
+   <addaction name="menuHighlighter"/>
    <addaction name="menuText_Codec"/>
    <addaction name="menuAbout"/>
   </widget>
@@ -284,6 +293,16 @@
   <action name="codecCP1251">
    <property name="text">
     <string>CP - 1251</string>
+   </property>
+  </action>
+  <action name="hlOn">
+   <property name="text">
+    <string>On</string>
+   </property>
+  </action>
+  <action name="hlOff">
+   <property name="text">
+    <string>Off</string>
    </property>
   </action>
  </widget>

@@ -79,11 +79,6 @@
     <addaction name="fontColour"/>
     <addaction name="bColour"/>
    </widget>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>Compilation</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
      <string>About</string>
@@ -121,7 +116,6 @@
    <addaction name="menuFile"/>
    <addaction name="menuEdit_2"/>
    <addaction name="menuEdit"/>
-   <addaction name="menu"/>
    <addaction name="menuHighlighter"/>
    <addaction name="menuText_Codec"/>
    <addaction name="menuAbout"/>

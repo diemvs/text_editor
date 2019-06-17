@@ -21,7 +21,7 @@ Text_edit::Text_edit(QWidget *parent) :
     this->setCentralWidget(ui->textEdit);
     _highlighter = new Highlighter(ui->textEdit->document());
 
-    codec = QTextCodec::codecForName("Windows-1251");
+    _codec = QTextCodec::codecForName("Windows-1251");
 
     connect(ui->open, SIGNAL(triggered()), this, SLOT(OpenFile()));
     connect(ui->saveAs, SIGNAL(triggered()), this, SLOT(SaveAsFile()));
@@ -56,8 +56,6 @@ Text_edit::Text_edit(QWidget *parent) :
     _hotKeyUndo = new QShortcut(this);
     _hotKeyUndo->setKey(Qt::CTRL+Qt::Key_Z);
     connect(_hotKeyUndo, SIGNAL(activated()), this, SLOT(Undo()));
-
-
 }
 
 Text_edit::~Text_edit()
@@ -68,16 +66,15 @@ Text_edit::~Text_edit()
 void Text_edit::OpenFile()
 {
     _fileName = QFileDialog::getOpenFileName(this,"Open file");
-      QFile file(_fileName);
+     QFile file(_fileName);
       _openedFileName = _fileName;
       if(!file.open(QFile::ReadOnly | QFile::Text)) {
           QMessageBox::warning(this,"..","I can't open the file!");
           return;
         }
       QTextStream in(&file);
-      QString text = in.readAll();
-      ui->textEdit->setText(text);
-      //highlighter = new Highlighter(ui->textEdit->document());
+      _str = in.readAll();
+      ui->textEdit->setText(_str);
       file.close();
 }
 
@@ -87,8 +84,8 @@ void Text_edit::SaveAsFile()
         QFile out(_openedFileName);
         if (out.open(QIODevice::WriteOnly)) {
             QTextStream stream(&out);
-            QString text = ui->textEdit->toPlainText();
-            stream << text;
+            _str = ui->textEdit->toPlainText();
+            stream << _str;
             out.flush();
             out.close();
         }
@@ -102,8 +99,8 @@ void Text_edit::SaveFile()
           return;
         }
       QTextStream out(&file);
-      QString text = ui->textEdit->toPlainText();
-      out << text;
+      _str = ui->textEdit->toPlainText();
+      out << _str;
       file.flush();
       file.close();
 }
@@ -111,9 +108,9 @@ void Text_edit::SaveFile()
 void Text_edit::Font()
 {
     bool ok;
-    QFont font = QFontDialog::getFont(&ok, this);
+    _font = QFontDialog::getFont(&ok, this);
     if (ok){
-        ui->textEdit->setFont(font);
+        ui->textEdit->setFont(_font);
     }else return;
 }
 
@@ -177,8 +174,8 @@ void Text_edit::codecCP1251()
 
     _str = ui->textEdit->toPlainText();
     _strUTF8 = _str.toUtf8();
-    codec = QTextCodec::codecForName("CP-1251");
-    _str = codec->toUnicode(_strUTF8);
+    _codec = QTextCodec::codecForName("CP-1251");
+    _str = _codec->toUnicode(_strUTF8);
     ui->textEdit->clear();
     ui->textEdit->setText(_str);
 }
@@ -189,10 +186,10 @@ void Text_edit::codecIBM866()
 
     _str = ui->textEdit->toPlainText();
     _strUTF8 = _str.toUtf8();
-    codec = QTextCodec::codecForName("CP-1251");
-    _str = codec->toUnicode(_strUTF8);
-    codec = QTextCodec::codecForName("IBM 866");
-    _str = codec->toUnicode(_strUTF8);
+    _codec = QTextCodec::codecForName("CP-1251");
+    _str = _codec->toUnicode(_strUTF8);
+    _codec = QTextCodec::codecForName("IBM 866");
+    _str = _codec->toUnicode(_strUTF8);
     ui->textEdit->clear();
     ui->textEdit->setText(_str);
 }
@@ -203,8 +200,8 @@ void Text_edit::codecWindows1251()
 
     _str = ui->textEdit->toPlainText();
     _strUTF8 = _str.toUtf8();
-    codec = QTextCodec::codecForName("Windows-1251");
-    _str = codec->toUnicode(_strUTF8);
+    _codec = QTextCodec::codecForName("Windows-1251");
+    _str = _codec->toUnicode(_strUTF8);
     ui->textEdit->clear();
     ui->textEdit->setText(_str);
 }
@@ -215,8 +212,8 @@ void Text_edit::codecUTF8()
 
     _str = ui->textEdit->toPlainText();
     _strUTF8 = _str.toUtf8();
-    codec = QTextCodec::codecForName("UTF-8");
-    _str = codec->toUnicode(_strUTF8);
+    _codec = QTextCodec::codecForName("UTF-8");
+    _str = _codec->toUnicode(_strUTF8);
     ui->textEdit->clear();
     ui->textEdit->setText(_str);
 }
@@ -252,13 +249,15 @@ void Text_edit::codecButton(codecType type){
     }
 }
 
+
 void Text_edit::turnOnHl(){
-         _highlighter = new Highlighter(ui->textEdit->document());
+     _highlighter = new Highlighter(ui->textEdit->document());
+     QMessageBox::information(this, "INFO", "Highlighter is on!");
         }
 
 
 void Text_edit::turnOffHl(){
-
-        delete _highlighter;
-        _highlighter = nullptr;
+    delete _highlighter;
+    _highlighter = nullptr;
+    QMessageBox::information(this, "INFO", "Highlighter is off!");
 }

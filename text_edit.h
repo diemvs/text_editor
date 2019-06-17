@@ -18,13 +18,12 @@ class Text_edit : public QMainWindow
 
 public:
     explicit Text_edit(QWidget *parent = nullptr);
-    enum codecType {
-        UTF8 = 0,
-        WINDOWS1251 = 1,
-        IBM866 = 2,
-        CP1251 = 3
+    enum codecType{
+        UTF8,
+        WINDOWS1251 ,
+        IBM866,
+        CP1251
     };
-
     ~Text_edit();
 
 
@@ -54,14 +53,14 @@ private:
     Ui::Text_edit *ui;
     QString _fileName, _openedFileName, _str;
     QByteArray _strUTF8;
+    QFont _font;
 
     QColor _pal, _fontColour;
     QPalette _bColour;
     QShortcut *_hotKeySave, *_hotKeyOpen, *_hotKeyUndo;
 
     Highlighter *_highlighter = nullptr;
-    QTextEdit *editor;
-    QTextCodec *codec;
+    QTextCodec *_codec;
 };
 
 #endif // TEXT_EDIT_H
